@@ -1,6 +1,7 @@
 package com.camkey.playback;
 
 import com.camkey.keyframe.Keyframe;
+import com.camkey.tween.OutQuadTween;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -133,6 +134,21 @@ class PlaybackTest {
         Playback playback = new Playback();
         playback.start(KEYFRAMES, 0, Playback.NO_LIMIT);
         assertEquals(10.0, playback.transform(100.0).x(), EPSILON);
+    }
+
+    @Test
+    void appliesDestinationTween() {
+        Playback playback = new Playback();
+        playback.start(
+            List.of(
+                new Keyframe("a", 0.0, 0.0, 0.0, 0.0, 0.0F, 0.0F, 0.0F, "linear"),
+                new Keyframe("b", 2.0, 10.0, 0.0, 0.0, 0.0F, 0.0F, 0.0F, OutQuadTween.NAME)
+            ),
+            0,
+            Playback.NO_LIMIT
+        );
+        tick(playback, 20);
+        assertEquals(7.5, playback.transform().x(), EPSILON);
     }
 
     private static void tick(Playback playback, int ticks) {

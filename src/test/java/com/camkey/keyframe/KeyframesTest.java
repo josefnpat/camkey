@@ -104,6 +104,15 @@ class KeyframesTest {
         assertEquals(List.of("x", "y"), keyframes.names());
     }
 
+    @Test
+    void allIsAnUnmodifiableSnapshot() {
+        Keyframes keyframes = new Keyframes();
+        keyframes.add(keyframe("a"));
+        List<Keyframe> snapshot = keyframes.all();
+        keyframes.add(keyframe("b"));
+        assertEquals(1, snapshot.size());
+    }
+
     private static Keyframe keyframe(String name) {
         return new Keyframe(name, 1.0, 0.0, 64.0, 0.0, 0.0F, 0.0F, 0.0F, "linear");
     }

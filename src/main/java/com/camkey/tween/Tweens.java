@@ -10,7 +10,10 @@ public final class Tweens {
 
     private static final List<Tween> ALL = List.of(
         new NoneTween(),
-        new LinearTween()
+        new LinearTween(),
+        new InQuadTween(),
+        new OutQuadTween(),
+        new InOutQuadTween()
     );
 
     private static final Map<String, Tween> BY_NAME = ALL.stream()
