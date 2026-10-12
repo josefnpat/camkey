@@ -15,7 +15,8 @@ import java.util.List;
 public final class CamKeyCommands {
     private static final List<CamKeyCommand> COMMANDS = List.of(
         new VersionCommand(),
-        new TweenCommand()
+        new TweenCommand(),
+        new RollCommand()
     );
 
     private CamKeyCommands() {
