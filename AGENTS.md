@@ -13,8 +13,8 @@ General:
 * Always use braces.
 * Don't add comments unless you're doing something complex worth commenting.
 * New classes should always be in their own file unless the user tells you otherwise.
-* Run `gradle test` in the project when you are done with a task.
-* Run `gradle build` in the project if you suspect the user wants to deploy and test.
+* Run `./gradlew test` in the project when you are done with a task.
+* Run `./gradlew build` in the project if you suspect the user wants to deploy and test.
 * Prefer fail-fast behavior: if a null appears in a list unexpectedly, let execution throw immediately so the bug is visible.
 * Do not change the structure, indentation, or style of existing if / else if / else chains unless the user explicitly asks for a control-flow refactor.
 * Treat existing comments as authoritative documentation: keep every existing comment verbatim and attached to the same code block when refactoring or moving code; if code is moved, move its comments with it.
