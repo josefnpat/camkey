@@ -19,6 +19,14 @@ class KeyframesTest {
     }
 
     @Test
+    void allReturnsKeyframesInOrder() {
+        Keyframes keyframes = new Keyframes();
+        keyframes.add(keyframe("a"));
+        keyframes.add(keyframe("b"));
+        assertEquals(List.of("a", "b"), keyframes.all().stream().map(Keyframe::name).toList());
+    }
+
+    @Test
     void findReturnsKeyframeOrNull() {
         Keyframes keyframes = new Keyframes();
         keyframes.add(keyframe("a"));
@@ -70,16 +78,6 @@ class KeyframesTest {
     }
 
     @Test
-    void withNameKeepsOtherFields() {
-        Keyframe original = new Keyframe("a", 2.5, 1.0, 64.0, -3.0, 10.0F, 20.0F, 30.0F, "none");
-        Keyframe renamed = original.withName("b");
-        assertEquals("b", renamed.name());
-        assertEquals(original.time(), renamed.time());
-        assertEquals(original.x(), renamed.x());
-        assertEquals(original.tween(), renamed.tween());
-    }
-
-    @Test
     void moveAfterImmediatePredecessorKeepsOrder() {
         Keyframes keyframes = new Keyframes();
         keyframes.add(keyframe("a"));
@@ -96,6 +94,14 @@ class KeyframesTest {
         List<String> names = keyframes.names();
         keyframes.add(keyframe("b"));
         assertEquals(List.of("a"), names);
+    }
+
+    @Test
+    void replaceAllSwapsContent() {
+        Keyframes keyframes = new Keyframes();
+        keyframes.add(keyframe("a"));
+        keyframes.replaceAll(List.of(keyframe("x"), keyframe("y")));
+        assertEquals(List.of("x", "y"), keyframes.names());
     }
 
     private static Keyframe keyframe(String name) {

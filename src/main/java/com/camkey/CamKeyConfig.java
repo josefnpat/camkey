@@ -5,7 +5,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
 import com.mojang.logging.LogUtils;
-import net.neoforged.fml.loading.FMLPaths;
 import org.slf4j.Logger;
 
 import java.io.IOException;
@@ -20,10 +19,6 @@ public final class CamKeyConfig {
     private static final Logger LOGGER = LogUtils.getLogger();
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
-    private static final String MOD_FOLDER = "mods";
-    private static final String CAMKEY_FOLDER = "camkey";
-    private static final String CONFIG_FILE = "config.json";
-
     private int[] version = new int[0];
     @SerializedName("tween-default")
     private String tweenDefault = Tweens.DEFAULT;
@@ -37,7 +32,7 @@ public final class CamKeyConfig {
     }
 
     public static CamKeyConfig load() {
-        Path path = path();
+        Path path = CamKeyPaths.configFile();
         CamKeyConfig config;
         if (Files.exists(path)) {
             config = read(path);
@@ -61,13 +56,6 @@ public final class CamKeyConfig {
         }
     }
 
-    public static Path path() {
-        return FMLPaths.GAMEDIR.get()
-            .resolve(MOD_FOLDER)
-            .resolve(CAMKEY_FOLDER)
-            .resolve(CONFIG_FILE);
-    }
-
     public int[] version() {
         return version;
     }
@@ -84,7 +72,7 @@ public final class CamKeyConfig {
     }
 
     public void save() {
-        save(path());
+        save(CamKeyPaths.configFile());
     }
 
     public void save(Path path) {

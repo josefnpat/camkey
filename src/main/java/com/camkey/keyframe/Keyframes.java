@@ -9,6 +9,10 @@ public final class Keyframes {
 
     private final List<Keyframe> keyframes = new ArrayList<>();
 
+    public List<Keyframe> all() {
+        return List.copyOf(keyframes);
+    }
+
     public List<String> names() {
         return keyframes.stream().map(Keyframe::name).toList();
     }
@@ -26,6 +30,11 @@ public final class Keyframes {
 
     public void add(Keyframe keyframe) {
         keyframes.add(keyframe);
+    }
+
+    public void replaceAll(List<Keyframe> loaded) {
+        keyframes.clear();
+        keyframes.addAll(loaded);
     }
 
     public boolean remove(String name) {
