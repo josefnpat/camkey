@@ -16,6 +16,7 @@ public final class CamKeyCommands {
     private static final List<CamKeyCommand> COMMANDS = List.of(
         new VersionCommand(),
         new TweenCommand(),
+        new KeyframeCommand(),
         new RollCommand()
     );
 
