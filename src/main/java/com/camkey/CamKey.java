@@ -19,4 +19,17 @@ public final class CamKey {
             .getVersion()
             .toString();
     }
+
+    public static int[] getVersionParts() {
+        return parseVersion(getVersion());
+    }
+
+    static int[] parseVersion(String version) {
+        String[] parts = version.split("\\.");
+        int[] parsed = new int[parts.length];
+        for (int i = 0; i < parts.length; i++) {
+            parsed[i] = Integer.parseInt(parts[i]);
+        }
+        return parsed;
+    }
 }
