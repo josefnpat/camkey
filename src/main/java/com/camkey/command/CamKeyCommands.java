@@ -18,6 +18,8 @@ public final class CamKeyCommands {
         new TweenCommand(),
         new KeyframeCommand(),
         new RollCommand(),
+        new PlayCommand(),
+        new StopCommand(),
         new SaveCommand(),
         new LoadCommand()
     );

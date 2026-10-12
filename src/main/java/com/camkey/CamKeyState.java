@@ -1,6 +1,7 @@
 package com.camkey;
 
 import com.camkey.keyframe.Keyframes;
+import com.camkey.playback.Playback;
 
 public final class CamKeyState {
     private static final CamKeyState INSTANCE = new CamKeyState();
@@ -10,6 +11,8 @@ public final class CamKeyState {
     private final CamKeyConfig config = CamKeyConfig.load();
 
     private final Keyframes keyframes = new Keyframes();
+
+    private final Playback playback = new Playback();
 
     private float cameraRoll = DEFAULT_CAMERA_ROLL;
 
@@ -39,5 +42,9 @@ public final class CamKeyState {
 
     public Keyframes keyframes() {
         return keyframes;
+    }
+
+    public Playback playback() {
+        return playback;
     }
 }
