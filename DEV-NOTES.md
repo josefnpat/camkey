@@ -18,7 +18,7 @@ Here is the timeline for my development.
   * set up build environment and make test mod (neoforge, jar deployment, etc)
 * 3pm-4pm: scope out project and have ai review development plan
 * 4pm-5:30pm: Build out function by function with tests.
-* 5:30pm6pm-: Added documentation
+* 5:30pm-6pm: Added documentation and made demo video
 
 ## AI Usage Notes
 
