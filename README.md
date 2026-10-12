@@ -43,6 +43,7 @@ camera **roll**.
 
 ## Requirements
 
+- NeoForge 21.1.259 (Minecraft 1.21.1)
 - JDK 21
 - No Gradle install needed — use the included wrapper (`./gradlew`)
 
